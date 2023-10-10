@@ -30,7 +30,7 @@ public class CharacterControlMove : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        PlayerMouseInput = new Vector2(Input.GetAxis("Mouse X"), Input.GetAxis("Mouse Y"));
+        PlayerMouseInput = new Vector2(Input.GetAxis("Mouse Y"), Input.GetAxis("Mouse X"));
         PlayerMovementInput = new Vector3(Input.GetAxis("Horizontal"), 0f, Input.GetAxis("Vertical"));
         MovePlayer();
         MovePlayerCamera();
@@ -62,10 +62,12 @@ public class CharacterControlMove : MonoBehaviour
 
     private void MovePlayerCamera() //mouse rotate, maybe swap with the smooth controller?
     {
-        xRot -= PlayerMouseInput.y * Sensitivity;
+        //this is whats breaking it but i dont know why it is suddenly
+        //tried rotating camera and other stuff
+        //xRot -= PlayerMouseInput.y * Sensitivity;
 
-        transform.Rotate(0f, PlayerMouseInput.x * Sensitivity, 0f);
-        PlayerCamera.transform.localRotation = Quaternion.Euler(xRot, 0f, 0f);
+        //transform.Rotate(0f, PlayerMouseInput.x * Sensitivity, 0f);
+        //PlayerCamera.transform.localRotation = Quaternion.Euler(xRot, 0f, 0f);
     }
 
 }
